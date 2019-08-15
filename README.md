@@ -1,5 +1,5 @@
 # better-discord-antispam.js
-A simple module based on Michael Scofield's module: discord-anti-spam.js! While containing the same efficiency(quick and simple setup), it comes with new things like setting up a report channel, timed mutes(automatically unmutes people after they changed their minds) and many more features coming on the way!
+A simple module based on Michael Scofield's module: discord-anti-spam.js! While containing the same efficiency(quick and simple setup), it comes with new things like setting up a report channel, timed mutes(removed ban option and added mute & unmute automatically) and many more features coming on the way!
 
 **DISCLAMER:** You can only setup 1 set of configuration per client. (That means that you can't configure settings for each server for now. You can only modify in which guild checker is run and in which checker is not run.) 
 
