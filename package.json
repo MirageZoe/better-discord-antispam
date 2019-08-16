@@ -1,6 +1,6 @@
 {
   "name": "better-discord-antispam",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple module based on Michale Scofield's module: discord-anti-spam.js! While containing the same features(quick and simple setup), it adds new things like setting up a report channel, timed mutes(removed ban option and added mute & unmute automatically) and many more features are coming on the way(probably adding that ban option back later...)!",
   "main": "better_antispam.js",
   "scripts": {
