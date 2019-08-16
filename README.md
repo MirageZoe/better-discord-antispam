@@ -3,6 +3,7 @@ A simple module based on Michael Scofield's module: discord-anti-spam.js! While 
 
 **DISCLAMER:** You can only setup 1 set of configuration per client. (That means that you can't configure settings for each server for now. You can only modify in which guild checker is run and in which checker is not run.) 
 
+
 ## How to add this to your node_modules:
 To install this module type in your console command below:
 ```
@@ -97,3 +98,4 @@ antispam(client, {
 <br>
 
 P.S: If you have any issues, bugs or trouble setting the module up. feel free to open an issue on [Github](https://github.com/MirageZoe/better-discord-antispam)
+P.S 2: This is just a release that is modified by me to suit the best my needs. If you find it on your taste, I'm happy. I'm not about to add complicated things only if I need them.
