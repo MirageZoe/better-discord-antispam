@@ -127,7 +127,7 @@ module.exports = async (client, options) => {
             user.removeRole(role);
             let unmutedEmbed = new RichEmbed()
               .setAuthor('Action | Auto Unmute')
-              .addField(`Member unmuted:`,`${user.username}`)
+              .addField(`Member unmuted:`,`${user}`)
               .addField(`Reason of unmute:`,`Time Expired(10 min)`)
               .setColor('#D9D900')
           ReportChannel.send(unmutedEmbed)
