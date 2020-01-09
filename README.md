@@ -32,7 +32,7 @@ client.on('ready', () => {
         ignoredMembers: ["Mavis#2389"], // These members are directly affected and they do not require to have the role above. Good for undercover pranks.
 		mutedRole: "muted", // Here you put the name of the role that should not let people write/speak or anything else in your server. If there is no role set, by default, the module will attempt to create the role for you & set it correctly for every channel in your server. It will be named "muted".
 		timeMuted: 1000 * 600, // This is how much time member X will be muted. if not set, default would be 10 min.
-		logChannel: "AntiSpam-logs" // This is the channel where every report about spamming goes to. If it's not set up, it will attempt to create the channel.
+		logChannel: "antiSpam-logs" // This is the channel where every report about spamming goes to. If it's not set up, it will attempt to create the channel.
       });
       
   // Rest of your code
