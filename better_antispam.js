@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js"); // Requiring this since we need it for embeds later
+const { MessageEmbed } = require("discord.js"); // Requiring this since we need it for embeds later
 
 let authors = [];
 let warned = [];
@@ -70,18 +70,18 @@ module.exports = async (client, options) => {
   
       punishedList.push(m.author.id);
       
-      let user = m.guild.members.get(m.author.id);
-      let ReportChannel = m.guild.channels.find(ch => ch.name === logChannel);
+      let user = m.guild.members.cache.get(m.author.id);
+      let ReportChannel = m.guild.channels.cache.find(ch => ch.name === logChannel);
       if(!ReportChannel){
         try{
-            ReportChannel = await m.guild.createChannel('AntiSpam-logs', {
+            ReportChannel = await m.guild.channels.create('antispam-logs', {
               type: 'text',
               permissionOverwrites:[{
                 id: m.guild.id,
                 deny: ['VIEW_CHANNEL']
               }]
             })
-              .then(m=> m.send(`Created **\`Anti-Spam-Logs\`** channel since a channel for reports wasn't provided from beginning when setting up the module.`))
+              .then(m=> m.send(`Created **\`anti-spam-Logs\`** channel since a channel for reports wasn't provided from beginning when setting up the module.`))
               .catch(console.error)
   
         }catch(e){
@@ -89,16 +89,19 @@ module.exports = async (client, options) => {
         }
       }; // end of creating the channel for anti spam logs
 
-      let role = m.guild.roles.find(namae => namae.name === mutedRole);      
+      let role = m.guild.roles.cache.find(namae => namae.name === mutedRole);      
       if (!role) {
         try {
-            role = await m.guild.createRole({
+            role = await m.guild.roles.create({
+              data:{
                 name: "muted",
                 color: "#000000",
                 permissions: []
+              },
+              reason: `muted role wasn't found! Created a new one!`
             })
-            m.guild.channels.forEach(async (channel, id) => {
-                await channel.overwritePermissions(role, {
+            m.guild.channels.cache.forEach(async (thechann, id) => {
+                await thechann.updateOverwrite(role, {
                     SEND_MESSAGES: false,
                     ADD_REACTIONS: false,
                     SEND_TTS_MESSAGES: false,
@@ -113,9 +116,9 @@ module.exports = async (client, options) => {
     }//end of creating the role
     
       if (user) {
-        user.addRole(role).then(()=>{
+        user.roles.add(role).then(()=>{
           m.channel.send(`<@!${m.author.id}>, ${muteMsg}`);
-          let muteEmbed = new RichEmbed()
+          let muteEmbed = new MessageEmbed()
             .setAuthor(' Action | Auto Mute', `https://images-ext-2.discordapp.net/external/Wms63jAyNOxNHtfUpS1EpRAQer2UT0nOsFaWlnDdR3M/https/image.flaticon.com/icons/png/128/148/148757.png`)
             .addField('Member muted:',`${user}`)
             .addField(`How much time got muted?:`,`${timeMuted} seconds (10 min)`)
@@ -124,8 +127,8 @@ module.exports = async (client, options) => {
             .setColor('#D9D900')
           ReportChannel.send(muteEmbed);
           setTimeout(()=>{
-            user.removeRole(role);
-            let unmutedEmbed = new RichEmbed()
+            user.roles.remove(role);
+            let unmutedEmbed = new MessageEmbed()
               .setAuthor('Action | Auto Unmute')
               .addField(`Member unmuted:`,`${user}`)
               .addField(`Reason of unmute:`,`Time Expired(10 min)`)
@@ -150,7 +153,7 @@ module.exports = async (client, options) => {
     if (message.author.bot) return;
     if (message.channel.type !== "text" || !message.member || !message.guild || !message.channel.guild) return;
    
-    if (message.member.roles.some(r => ignoredRoles.includes(r.name)) || ignoredMembers.includes(message.author.tag)) return;
+    if (message.member.roles.cache.some(r => ignoredRoles.includes(r.name)) || ignoredMembers.includes(message.author.tag)) return;
 
     if (message.author.id !== client.user.id) {
       let currentTime = Math.floor(Date.now());

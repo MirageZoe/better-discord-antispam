@@ -1,4 +1,8 @@
-# better-discord-antispam.js
+#Update: 
+The npm have been updated to work with the newest update of discord.js v12!
+Note: If the bot have muted someone for 10min, 4min have passed then randomly the bot went offline, do not forget to remove the role from user once the rest 6min are gone or the it's muted forever! (will modify this later)
+Any other issues, please open it on [Github](https://github.com/MirageZoe/better-discord-antispam)!
+## better-discord-antispam.js
 A simple module based on Michael Scofield's module: discord-anti-spam.js! While containing the same efficiency(quick and simple setup), it comes with new things like setting up a report channel, timed mutes(removed ban option and added mute & unmute automatically) and many more features coming on the way!
 
 **DISCLAMER:** You can only setup 1 set of configuration per client. (That means that you can't configure settings for each server for now. You can only modify in which guild checker is run and in which checker is not run.) 
@@ -32,7 +36,7 @@ client.on('ready', () => {
         ignoredMembers: ["Mavis#2389"], // These members are directly affected and they do not require to have the role above. Good for undercover pranks.
 		mutedRole: "muted", // Here you put the name of the role that should not let people write/speak or anything else in your server. If there is no role set, by default, the module will attempt to create the role for you & set it correctly for every channel in your server. It will be named "muted".
 		timeMuted: 1000 * 600, // This is how much time member X will be muted. if not set, default would be 10 min.
-		logChannel: "AntiSpam-logs" // This is the channel where every report about spamming goes to. If it's not set up, it will attempt to create the channel.
+		logChannel: "antispam-logs" // This is the channel where every report about spamming goes to. If it's not set up, it will attempt to create the channel.
       });
       
   // Rest of your code
