@@ -104,3 +104,5 @@ antispam(client, {
 P.S: If you have any issues, bugs or trouble setting the module up. feel free to open an issue on [Github](https://github.com/MirageZoe/better-discord-antispam)
 
 P.S 2: This is just a release that is modified by me to suit the best my needs. If you find it on your taste, I'm happy. I'm not about to add complicated things only if I need them.
+
+P.S 3: Remember if you don't get any notification in #antispam-logs, that means you haven't added with lowercase the name of  logchannel in config (this is because discord channels cannot have uppercase for some reasons but voice channels can.)
